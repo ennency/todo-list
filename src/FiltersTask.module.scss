@@ -1,0 +1,25 @@
+.button {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 17px;
+  letter-spacing: 0em;
+  padding: 15px 35px;
+  position: relative;
+  background: transparent;
+  border: none;
+  border-bottom: 5px solid transparent;
+  transition: all 0.1s ease-in-out;
+  margin-bottom: -1px;
+}
+
+.container {
+  border-bottom: 1px solid #bdbdbd;
+  display: flex;
+  justify-content: space-around;
+}
+
+.active {
+  border-bottom-color: green;
+}

@@ -1,0 +1,14 @@
+@import-normalize;
+
+.container {
+  width: 100%;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 608px;
+  margin: 0 auto;
+}
