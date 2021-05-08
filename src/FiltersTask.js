@@ -3,14 +3,14 @@ import { useState } from 'react';
 
 import styles from './FiltersTask.module.scss';
 
-const FiltersTask = ({ setFilter }) => {
+export const FiltersTask = ({ setFilter }) => {
   const [filterActive, setFilterActive] = useState('ALL');
 
   const buttonAllClasses = `${styles.button} ${filterActive === 'ALL' ? styles.active : ''}`;
   const buttonActiveClasses = `${styles.button} ${filterActive === 'ACTIVE' ? styles.active : ''}`;
   const buttonCompletedClasses = `${styles.button} ${filterActive === 'COMPLETED' ? styles.active : ''}`;
   
-  const handleSetFilterClick = (filter, e) => {
+  const handleSetFilterClick = (filter) => {
     setFilterActive(filter);
     setFilter(filter)
   }
@@ -19,18 +19,16 @@ const FiltersTask = ({ setFilter }) => {
       <button 
         key={'ALL'}
         className={buttonAllClasses}
-        onClick={(e) => handleSetFilterClick('ALL', e)}>All</button>
+        onClick={() => handleSetFilterClick('ALL')}>All</button>
       <button 
         key={'ACTIVE'}
         className={buttonActiveClasses} 
-        onClick={(e) => handleSetFilterClick('ACTIVE', e)}>Active</button>
+        onClick={() => handleSetFilterClick('ACTIVE')}>Active</button>
       <button 
         key={'COMPLETED'}
         className={buttonCompletedClasses}  
-        onClick={(e) => handleSetFilterClick('COMPLETED', e)}>Completed</button>
+        onClick={() => handleSetFilterClick('COMPLETED')}>Completed</button>
     </section>
   );
 }
-
-export default FiltersTask;
 

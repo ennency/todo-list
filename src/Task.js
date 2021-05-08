@@ -4,36 +4,35 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import styles from './Task.module.scss';
 
+const Task = ({ title, id, completed, deleteTask, completeTask }) => {
 
-export const Task = ({ title, id, completed, deleteTask, completeTask }) => {
-
-  function handleCompletedChange() {
+  function handleCompleteTaskChange() {
     completeTask(id);
   };
 
-  function handleDeleteClick() {
+  function handleDeleteTaskClick() {
     deleteTask(id);
   }
 
-  const completedClass = completed ? styles.isCompleted : '';
+  const completedLabelClasses = completed ? styles.isCompleted : '';
 
   return (
     <li className={styles.task}>
       <FormControlLabel
         control={
           <Checkbox
-            onChange={handleCompletedChange}
+            onChange={handleCompleteTaskChange}
             checked={completed}
             name="checked"
             color="primary"
           />
         }
         classes={{
-          label: completedClass
+          label: completedLabelClasses
         }}
         label={title}
       />
-      <IconButton aria-label="delete" onClick={handleDeleteClick}>
+      <IconButton aria-label="delete" onClick={handleDeleteTaskClick}>
         <DeleteOutlineOutlinedIcon />
       </IconButton>
     </li>

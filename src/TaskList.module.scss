@@ -2,3 +2,18 @@
   list-style-type: none;
   padding-left: 0;
 }
+
+.deleteButton {
+  background: #eb5757;
+  border-radius: 4px;
+  padding: 12px;
+  border: none;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  float: right;
+  cursor: pointer;
+}

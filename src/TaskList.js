@@ -1,5 +1,10 @@
 import Todo from './Task';
 import AddTask from './AddTask';
+import Button from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+import { makeStyles } from '@material-ui/core/styles';
+
 import styles from './TaskList.module.scss';
 
 const FILTER_MAP = {
@@ -8,10 +13,25 @@ const FILTER_MAP = {
   COMPLETED: task => task.completed
 };
 
-export const TaskList = ({ taskList, completeTask, addTask, deleteTask, filter }) => {
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
+
+export const TaskList = ({ 
+  taskList, completeTask, addTask, deleteTask, deleteCompletedTasks, filter 
+}) => {
+  
+  function handleClick() {
+    deleteCompletedTasks();
+  }
+
+  const classes = useStyles();
+
   return (
     <>
-      <AddTask addTask={addTask} />
+      {filter !== 'COMPLETED' && <AddTask addTask={addTask} />}
       <ul className={styles.container}>
         {
           taskList.filter(FILTER_MAP[filter]).map((task) => {
@@ -29,8 +49,17 @@ export const TaskList = ({ taskList, completeTask, addTask, deleteTask, filter }
           })
         }
       </ul>
+      {filter === 'COMPLETED' && (
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.deleteButton}
+          startIcon={<DeleteIcon />}
+          onClick={handleClick}
+        >
+          Delete All
+        </Button>
+      )}
     </>
   );
 }
-
-export default TaskList;

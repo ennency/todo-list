@@ -5,7 +5,7 @@ import styles from './AddTask.module.scss';
 const AddTask = ({ addTask }) => {
   const [detailValue, setDetailValue] = useState('');
 
-  function handleClick(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     if(detailValue.length > 0) {
       addTask(detailValue);
@@ -18,13 +18,13 @@ const AddTask = ({ addTask }) => {
   }
 
   return (
-    <form className={styles.formContainer} onSubmit={(e) => handleClick(e)}>
+    <form className={styles.formContainer} onSubmit={handleSubmit}>
       <input 
         type="text" 
         className={styles.inputText}
         value={detailValue} 
         placeholder="Add Details"
-        onChange={(e) => handleChange(e)} />
+        onChange={handleChange} />
       <button className={styles.button}>Add</button>
     </form>
   );
